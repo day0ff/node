@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Transmit.</title>
+</head>
+
+<body>
+  <form method="post" enctype="multipart/form-data" action="http://localhost:3000/api/upload" id="formUpload">
+    <div>
+      <label for="file" id="label">Choose a file</label>
+      <!--input type="file" id="file" name="fileToUpload" onchange="javascript:console.log(this.value)" multiple-->
+      <input type="file" id="file" name="fileToUpload" onchange="javascript:console.log(this.value)">
+
+      <button id="send">Send the file</button>
+    </div>
+  </form>
+  <form action="http://localhost:3000/api/users">
+    <p><input type="submit" value="Get"></p>
+  </form>
+  <div>
+    <select id="extension">
+      <option value="txt" selected>txt</option>
+      <option value="pdf">pdf</option>
+      <option value="docx">docx</option>
+      <option value="png">png</option>
+      <option value="jpg">jpg</option>
+    </select>
+    <button id="load">Transmit file</button>
+    <button id="transmitFiles">Transmit files</button>
+  </div>
+  </br>
+  <div id="parent"></div>
+  <!--object data="" width="300" height="200" id="obj">
+  </object>
+  <button id="getObject">Object</button>&nbsp;
+  <button id="sendObject">Send</button-->
+  <script>
+    var formUpload = document.getElementById('formUpload');
+    var file = document.getElementById('file');
+    var label = document.getElementById('label');
+    var send = document.getElementById('send');
+    var load = document.getElementById('load');
+    var extension = document.getElementById('extension');
+    var replace = document.getElementById('replace');
+    var obj = document.getElementById('obj');
+
+    var files = [{
+        name: "docx",
+        url: "http://localhost:3000/api/download/docx"
+      },
+      {
+        name: "pdf",
+        url: "http://localhost:3000/api/download/pdf"
+      },
+      {
+        name: "jpg",
+        url: "http://localhost:3000/api/download/jpg"
+      },
+      {
+        name: "png",
+        url: "http://localhost:3000/api/download/png"
+      }
+    ];
+    var transmitButton = document.getElementById('transmitFiles');
+
+
+    load.addEventListener("click", transmit, false);
+    transmitButton.addEventListener("click", () => transmitFiles(files), false);
+
+    function transmit() {
+      console.log('Transmit started');
+      fetch(`http://localhost:3000/api/download/${extension.value}`).then((response) =>
+        response.blob().then((blob) => {
+          console.log(`Download complete :: download.${extension.value}`);
+          let formData = new FormData();
+          formData.append('fileToUpload', blob);
+          return fetch(`http://localhost:3000/api/upload/${extension.value}`, {
+              method: 'POST',
+              body: formData
+            }).then(() => console.log(`Upload complete :: download.${extension.value}`))
+            .catch(reject => console.log(`Can not upload file. Error ${reject}`));
+        }).then(() => console.log('Transmit complete'))
+      ).catch(reject => console.log(`Network request failed with status ${reject.status} : ${reject.statusText}`));
+    }
+
+    async function transmiter(name, url) {
+      console.log('Transmit started');
+      return fetch(url).then((response) => {
+        return response.blob().then((blob) => {
+          console.log(`Download complete :: ${name}`);
+          let formData = new FormData();
+          formData.append('fileToUpload', blob);
+          return fetch(`http://localhost:3000/api/upload/${name}`, {
+              method: 'POST',
+              body: formData
+            }).then(() => console.log(`Upload complete :: ${name}`))
+            .catch(reject => console.log(`Can not upload file. Error ${reject}`));
+        }).then(() => console.log('Transmit complete'));
+      }).catch(reject => console.log(`Network request failed with status : ${reject}`));
+    }
+
+    async function download(name, url) {
+      console.log('Transmit started');
+      fetch(url).then((response) =>
+        response.blob().then((blob) => {
+          let a = document.createElement('a');
+          a.href = window.URL.createObjectURL(blob);
+          a.download = `download.${name}`;
+          a.click();
+          console.log(`download :: ${name}`);
+        }).then(() => console.log('Transmit complete'))
+      ).catch(reject => console.log(`Network request failed with status : ${reject}`));
+    }
+
+    function transmitFiles(files) {
+      this.asyncForEach(files, async (file) => {
+        await this.transmiter(file.name, file.url);
+      })
+    }
+
+    async function asyncForEach(array, callback) {
+      for (let index = 0; index < array.length; index++) {
+        await callback(array[index], index, array)
+      }
+    }
+  </script>
+</body>
+
+</html>

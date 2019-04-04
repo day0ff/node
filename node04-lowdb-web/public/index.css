@@ -1,0 +1,266 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: white;
+    color: #53565A;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#root {
+    margin: 0 auto;
+    padding: 0;
+    width: 1440px;
+    height: 100vh;
+    /*background: white url('./images/taking_notes.png') no-repeat 531px 218px;*/
+}
+
+.app-container {
+    margin: 20px 23px;
+}
+
+header img {
+    float: left;
+}
+
+header input[type="search"] {
+    margin: 2px 8px;
+    padding: 10px 10px 10px 40px;
+    background: linear-gradient(0deg, #F6F6F6, #F6F6F6), #FEFEFE;
+    border: 1px solid #E2E2E2;
+    box-sizing: border-box;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    width: 582px;
+    height: 40px;
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 16px;
+    line-height: normal;
+    color: #53565A;
+}
+
+header input[type="search"]::placeholder {
+    color: #AEAEAE;
+}
+
+header input[type="image"] {
+    position: relative;
+    top: 2px;
+    left: 35px;
+    cursor: initial;
+}
+
+nav {
+    margin: 30px 31px;
+    border-top: solid 1px #E2E2E2;
+    width: 759px;
+}
+
+nav button {
+    padding: 16px 0 0;
+    width: 175px;
+    height: 50px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    text-align: center;
+    background: white;
+    border-width: 0;
+    color: #AEAEAE;
+}
+
+nav button:hover {
+    cursor: pointer;
+    color: #53565A;
+    border-width: 4px 0 0;
+    border-color: #E2E2E2;
+}
+
+nav button.active {
+    border-width: 4px 0 0;
+    border-color: #2F80ED;
+    color: #53565A;
+}
+
+section {
+    margin: 30px 0 0 31px;
+    width: 759px;
+    color: #706E6B;
+}
+
+section form {
+    text-align: right;
+}
+
+section form label {
+    font-size: 12px;
+    line-height: normal;
+    float: left;
+}
+
+section form textarea {
+    margin: 3px;
+    background: #FFFFFF;
+    border: 1px solid #DDDBDA;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 756px;
+    height: 90px;
+    text-align: left;
+    padding: 10px;
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 16px;
+    line-height: normal;
+    color: #53565A;
+}
+
+section form textarea::placeholder {
+    color: #AEAEAE;
+}
+
+section form input[type="submit"] {
+    margin: 11px 0 0 0;
+    width: 191px;
+    height: 36px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    border-width: 0;
+    background: #2F80ED;
+}
+
+section form input[type="submit"]:disabled {
+    background: #AEAEAE;
+}
+
+section form input[type="submit"]:hover {
+    cursor: pointer;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 3px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.14);
+}
+
+section form input[type="submit"]:disabled:hover {
+    cursor: initial;
+    box-shadow: none;
+}
+
+article {
+    margin: 23px 0 0 31px;
+}
+
+article ul {
+    margin: 0;
+    padding: 0;
+}
+
+article ul li {
+    margin:17px 0 0;
+    position: relative;
+    display: block;
+    width: 728px;
+    height: 80px;
+    list-style-type: none;
+    background: #FFFFFF;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 16px 12px 13px 23px;
+    transition: display 0.5s;
+}
+
+article ul li span {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: normal;
+    color: #53565A;
+}
+
+article ul li:hover {
+    box-shadow: 0 6px 20px rgba(47, 128, 237, 0.75);
+}
+
+article ul li span:hover {
+    cursor: pointer;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.14);
+}
+
+article ul li span.important {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+article ul li span.important:before {
+    /*content: url('./images/star_border.png');*/
+    padding: 10px;
+    line-height: 22px;
+}
+
+article ul li span.complete {
+    text-decoration-line: line-through;
+}
+
+article ul li button {
+    cursor: pointer;
+    position: absolute;
+}
+
+article ul li > button {
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+article ul li:hover > button {
+    opacity: 1;
+}
+
+article ul li button:hover {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 3px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.14);
+}
+
+article ul li button#mark {
+    width: 183px;
+    height: 36px;
+    right: 73px;
+    top: 11px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+    border-width: 0;
+    color: #FFFFFF;
+    background: #BDBDBD;
+    border-radius: 200px;
+}
+
+article ul li button#mark.important {
+    background: #27AE60;
+}
+
+article ul li button#delete {
+    width: 40px;
+    height: 40px;
+    right: 12px;
+    top: 11px;
+    border-width: 0;
+    border-radius: 20px;
+    /*background: url('./images/Delete.png');*/
+}
