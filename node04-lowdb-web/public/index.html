@@ -3,33 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>LowDb</title>
-    <link rel="stylesheet" href="index.css"/>
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="checker.css"/>
+    <script src="checker.js"></script>
 </head>
 <body>
 <div class="app-container">
-    <header>
-        <img src="" alt="logo"/>
-        <input type="image" name="search" alt="search" src="" disabled/>
-        <input type="search" placeholder="Search field."/>
-    </header>
     <article>
-        <ul>
-            <li>
-                <span>li li li 1</span>
-            </li>
-            <li>
-                <span>li li li 2</span>
-            </li>
-        </ul>
+        <h1>db Config</h1>
+        <input type="button" id="edit" value="Edit"/>
+        <input type="button" id="cancel" value="Cancel"/>
+        <input type="button" id="submit" value="Submit"/>
+        <input type="button" id="pending" value="Pending..." disabled/>
+        <textarea placeholder="Write config hear." disabled></textarea>
     </article>
-    <section>
-        <form name="addTodo" onSubmit="">
-            <label for="newTodo">New Task</label>
-            <textarea id="newTodo" name="newTodo" placeholder="Write new task."></textarea>
-            <input type="submit" value="Add"/>
-        </form>
-    </section>
 </div>
 </body>
 </html>

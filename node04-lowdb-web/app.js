@@ -27,32 +27,54 @@ low(adapter)
       });
     });
 
+
     app.get('/api', (req, res) => {
-      const content = fs.readFileSync('./db/db.json', 'utf8');
-      // const all = JSON.parse(content);
-      res.send(content);
-    });
-
-    app.get('/api/mails', (req, res) => {
-      const user = db.get('mails')
+      const record = db.get('root')
         .value();
-      res.send(user)
+      res.send(record);
     });
 
-    app.get('/api/users', (req, res) => {
-      const users = db.get('users')
+    app.get('/api/all', (req, res) => {
+      const record = db.get('root')
         .value();
-      res.send(users)
+      res.send(record);
     });
 
-    app.get('/api/users/:id', (req, res) => {
-      const user = db.get('users')
+    app.get('/api/:field', (req, res) => {
+      const record = db.get(`root.${req.params.field}`)
+        .value();
+      res.send(record);
+    });
+
+    app.put('/api/:field', (req, res) => {
+      db.get(`root.${req.params.field}`)
+        .assign(req.body)
+        .write()
+        .then(field => res.send(field));
+    });
+
+    app.put('/api/users', (req, res) => {
+      db.get('users')
         .find({
-          "id": parseInt(req.params.id, 10)
+          "id": parseInt(req.body.id, 10)
         })
-        .value();
+        .assign(req.body)
+        .write()
+        .then(user => res.send(user));
+    });
 
-      res.send(user)
+    app.post('/api/submit', (req, res) => {
+      db.get(`root`)
+        .assign(req.body)
+        .write()
+        .then(root => res.send(root));
+    });
+
+    app.post('/api/:field', (req, res) => {
+      db.get(`root.${req.params.field}`)
+        .assign(req.body)
+        .write()
+        .then(field => res.send(field));
     });
 
     app.post('/api/users', (req, res) => {
@@ -67,6 +89,17 @@ low(adapter)
         .then(user => res.send(user));
     });
 
+    app.get('/api/users/:id', (req, res) => {
+      const user = db.get('users')
+        .find({
+          "id": parseInt(req.params.id, 10)
+        })
+        .value();
+
+      res.send(user)
+    });
+
+
     app.delete('/api/users/:id', (req, res) => {
       db.get('users')
         .remove({
@@ -74,16 +107,6 @@ low(adapter)
         })
         .write()
         .then(user => res.send(user[0]));
-    });
-
-    app.put('/api/users', (req, res) => {
-      db.get('users')
-        .find({
-          "id": parseInt(req.body.id, 10)
-        })
-        .assign(req.body)
-        .write()
-        .then(user => res.send(user));
     });
 
   })

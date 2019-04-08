@@ -1,56 +1,40 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "name": "Ivar",
-      "age": "33"
+  "root": {
+    "mailer": {
+      "service": "yandex",
+      "port": 587,
+      "user": "test.mail.accaunt.19@gmail.com",
+      "password": "zest19TMAgl",
+      "from": "Forms validation service."
     },
-    {
-      "id": 2,
-      "name": "Jane",
-      "age": "21"
+    "mails": [
+      "111111",
+      "22222",
+      "55555",
+      "44"
+    ],
+    "user": {
+      "company": "CNTY",
+      "package": "AMINORLOA",
+      "firstName": "Mccarthy",
+      "lastName": "Tristen",
+      "ssn": "386-19-1581",
+      "password": "s$Yhtr8Net",
+      "answer1": "Mccarthy",
+      "answer2": "Tristen",
+      "answer3": "MT",
+      "answer4": "yn",
+      "answer5": "87",
+      "email": "tristenmccarthykJz@teleosaurs.xyz",
+      "phone": "313-435-3614",
+      "bankABA": "267084131"
     },
-    {
-      "id": 3,
-      "name": "Alice",
-      "age": "25"
-    },
-    {
-      "id": 4,
-      "name": "Tom",
-      "age": "28"
-    },
-    {
-      "name": "Drako",
-      "age": "55",
-      "id": 5
-    }
-  ],
-  "mailer": {
-    "service": "gmail",
-    "port": 587,
-    "user": "test.mail.accaunt.19@gmail.com",
-    "password": "zest19TMAgl",
-    "from": "Forms validation service."
-  },
-  "mails": [
-    "yudusa@fast-mail.one",
-    "fnffzzyb@supere.ml"
-  ],
-  "user": {
-    "company": "CNTY",
-    "package": "AMINORLOA",
-    "firstName": "Mccarthy",
-    "lastName": "Tristen",
-    "ssn": "386-19-1581",
-    "password": "s$Yhtr8Net",
-    "answer1": "Mccarthy",
-    "answer2": "Tristen",
-    "answer3": "MT",
-    "answer4": "yn",
-    "answer5": "87",
-    "email": "tristenmccarthykJz@teleosaurs.xyz",
-    "phone": "313-435-3614",
-    "bankABA": "267084131"
+    "urls": [
+      "https://www.ainsight.com/nomoreforms/logon.jsp?clientCode=CNTY&type=client_nonins&clientpswd=URLLOA",
+      "asdasdasd"
+    ],
+    "sums": [
+      "sadmfqjr 31jr 1j3r"
+    ]
   }
 }
